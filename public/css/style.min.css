@@ -3254,13 +3254,18 @@ pre {
     margin-top: -7px
 }
 
+.error{
+    color: red;
+    font-weight: bold;
+}
+
 .section .section-header {
     background-color: #fafbfe;
     border-radius: 3px;
     border: 1px solid #dae1f4;
     position: relative;
     margin-bottom: 30px;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     align-items: center
 }

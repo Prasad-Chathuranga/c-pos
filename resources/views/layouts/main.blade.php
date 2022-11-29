@@ -26,16 +26,20 @@
 </head>
 
 <body class="layout-4">
-    <div class="page-loader-wrapper">
+    {{-- <div class="page-loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
-    </div>
+    </div> --}}
     <div id="app">
         <div class="main-wrapper main-wrapper-1">
             <div class="navbar-bg"></div>
             @include('layouts.rightbar')   
         <div class="main-content">
         @include('layouts.leftbar') 
-         @yield('component')
+        @yield('content')
+            
+
+         {{-- @yield('component') --}}
+         {{-- @livewire('users.create') --}}
    
         </div>
 
@@ -43,11 +47,12 @@
     </div>
 
 
-    @livewireScripts
+  
 
 
     <!-- General JS Scripts -->
 <script src="{{ url('js/bundles/lib.vendor.bundle.js')}}"></script>
+<script src="{{ url('js/modules/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ url('js/CodiePie.js')}}"></script>
 
 <!-- JS Libraies -->
@@ -58,11 +63,13 @@
 <script src="{{ url('js/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 
 <!-- Page Specific JS File -->
-<script src="{{ url('js/page/index.js')}}"></script>
+{{-- <script src="{{ url('js/page/index.js')}}"></script> --}}
 
 <!-- Template JS File -->
 <script src="{{ url('js/scripts.js')}}"></script>
 <script src="{{ url('js/custom.js')}}"></script>
+
+@livewireScripts
 
 </body>
 

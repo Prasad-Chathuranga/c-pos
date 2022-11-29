@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Users;
+use App\Http\Livewire\Users\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('dashboard', Dashboard::class);
 Route::get('users', Users::class)->name('users');
+Route::get('user/create', Create::class)->name('create_user');
