@@ -32,13 +32,13 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label for="inputEmail4">Email</label>
-                                            <input type="email" id="email" name="email" class="form-control" wire:model='email'  placeholder="Email Address">
+                                            <input type="email" id="email" class="form-control" wire:model='email'  placeholder="Email Address">
                                             @error('email') <span class="error">{{ $message }}</span> @enderror
                                         </div>
 
                                         <div class="form-group ml-5 pl-5 col-md-4">
                                             <label for="inputPassword4">User Name</label>
-                                            <input type="text" class="form-control" id="username" name="username" wire:model='username' 
+                                            <input type="text" class="form-control" id="username"  wire:model='username' 
                                                 placeholder="User Name">
                                                 @error('username') <span class="error">{{ $message }}</span> @enderror
                                         </div>
