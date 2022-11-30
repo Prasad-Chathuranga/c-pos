@@ -14,7 +14,9 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "livewire/livewire": "^2.10"
+        "livewire/livewire": "^2.10",
+        "php-flasher/flasher-laravel": "^1.8",
+        "php-flasher/flasher-sweetalert-laravel": "^1.8"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

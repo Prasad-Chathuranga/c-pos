@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Flasher\SweetAlert\Prime\SweetAlertFactory;
 
 class Users extends Component
 {
@@ -23,7 +24,38 @@ class Users extends Component
         return view('livewire.users.users', compact('users'))->extends('layouts.main');
     }
 
-    public function delete(){
-        $this->email = 'test changed';
+
+    public function delete($id, SweetAlertFactory $flasher){
+
+        $flasher->addWarning('Are you sure want to delete this record ?');
+        $flasher->showConfirmButton(
+            true, 
+            null, 
+            null, 
+            null
+        );
+        $flasher->showCancelButton(
+            true,
+            null,
+            null,
+            null
+        );
+
+        // $flasher->showConfirmButton(true);
+        // $flasher->confirmButtonText('Yes');
+        // $flasher->showCancelButton(true);
+
+        // try {
+
+        //     $user = User::findOrFail($id);
+        //     $user->delete();
+            
+        //     return redirect()->back();
+
+        // } catch (\Throwable $th) {
+        //     throw $th;
+        // }
+        
     }
+    
 }

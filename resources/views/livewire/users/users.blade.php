@@ -28,6 +28,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-md v_center">
                                 <tr>
+                                    <th>Action</th>
                                     <th>#</th>
                                     <th>User Name</th>
                                     <th>Email Address</th>
@@ -37,6 +38,10 @@
                                 </tr>
                                 @foreach ($users as $user)
                                 <tr>
+                                    <td>
+                                        <a data-toggle="tooltip" data-placement="top" title="Edit User" href="{{route('create_user', $user->id)}}" class="text-info"><i class="fa fa-pencil"></i></a>
+                                        <a data-toggle="tooltip" data-placement="top" title="Delete User" href="javascript:;" wire:click='delete({{$user->id}})' class="text-danger"><i class="fa fa-trash-can ml-2"></i></a>
+                                    </td>
                                     <td>{{$user->id}}</td>
                                     <td>{{$user->username}}</td>
                                     <td>{{$user->email}}</td>

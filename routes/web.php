@@ -22,4 +22,4 @@ Route::get('/', function () {
 
 Route::get('dashboard', Dashboard::class);
 Route::get('users', Users::class)->name('users');
-Route::get('user/create', Create::class)->name('create_user');
+Route::get('user/{id?}', Create::class)->name('create_user');

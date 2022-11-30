@@ -11,7 +11,7 @@
             </div>
 
             <div class="section-body">
-                
+            
                 
                 {{-- <h2 class="section-title">User Registry</h2>
             <p class="section-lead">Example of some Bootstrap table components.</p> --}}
@@ -20,9 +20,10 @@
                     <div class="col-12 col-md-12 col-lg-12">
                         
                         <div class="card">
-                            <form wire:submit.prevent="saveUser">
+                            <form @if($user_id)wire:submit.prevent="updateUser"@else wire:submit.prevent="saveUser"@endif>
                             <div class="card-header">
-                                <h4>Create New User</h4>
+                                <h4>{{$user_id ? 'Edit':'Create New'}} User</h4>
+                                
                                 <div class="ml-auto">
                                     <button type="submit" class="btn btn-success">Save</button>
                                 </div>
@@ -38,7 +39,7 @@
 
                                         <div class="form-group ml-5 pl-5 col-md-4">
                                             <label for="inputPassword4">User Name</label>
-                                            <input type="text" class="form-control" id="username"  wire:model='username' 
+                                            <input type="text" class="form-control" id="username" wire:model='username' 
                                                 placeholder="User Name">
                                                 @error('username') <span class="error">{{ $message }}</span> @enderror
                                         </div>
@@ -63,9 +64,9 @@
                                         <div class="form-group col-md-4">
                                             <label for="inputEmail4">Role</label>
                                             <select wire:model='role' class="form-control">
-                                                <option value="" selected>Select...</option>
-                                                @foreach ($roles as $role)
-                                                <option value="{{$role->id}}">{{$role->name}}</option>
+                                                {{-- <option value="" selected>Select...</option> --}}
+                                                @foreach ($roles as $rol)
+                                                <option value="{{$rol->id}}">{{$rol->name}}</option>
                                                 @endforeach
                                             </select>
                                             @error('role') <span class="error">{{ $message }}</span> @enderror
