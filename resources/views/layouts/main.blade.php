@@ -14,6 +14,10 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ url('js/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('js/modules/fontawesome/css/all.min.css') }}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ url('js/modules/bootstrap-social/bootstrap-social.css')}}">
@@ -61,6 +65,8 @@
 <script src="{{ url('js/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
 <script src="{{ url('js/modules/summernote/summernote-bs4.js')}}"></script>
 <script src="{{ url('js/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+<script src="{{ url('js/modules/sweetalert/sweetalert.min.js')}}"></script>
+
 
 <!-- Page Specific JS File -->
 {{-- <script src="{{ url('js/page/index.js')}}"></script> --}}
@@ -70,6 +76,7 @@
 <script src="{{ url('js/custom.js')}}"></script>
 
 @livewireScripts
+@stack('scripts')
 
 </body>
 

@@ -16,9 +16,9 @@
                                     <label for="email">Email</label>
                                     <input id="email" type="email" wire:model='email' class="form-control" name="email" tabindex="1" required autofocus>
                                     @error('email')
-                                    <div class="invalid-feedback">
+                                    <span class="error">
                                         {{$message}}
-                                    </div>
+                                    </span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
@@ -32,9 +32,9 @@
                                     </div>
                                     <input id="password" type="password" wire:model='password' class="form-control" name="password" tabindex="2" required>
                                     @error('password')
-                                    <div class="invalid-feedback">
+                                    <span class="error">
                                         {{$message}}
-                                    </div>
+                                    </span>
                                     @enderror
                                 </div>
                                 <div class="form-group">

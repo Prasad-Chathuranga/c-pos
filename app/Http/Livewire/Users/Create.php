@@ -15,7 +15,7 @@ class Create extends Component
         $role,
         $active;
     
-        public $user_id, $err;
+        public $user_id;
 
     protected $rules = [
         'username' => 'required|min:8',
@@ -76,6 +76,10 @@ class Create extends Component
         } catch (\Exception $th) {
             throw $th;
         }
+    }
+
+    public function updated($propoertyName){
+        $this->validateOnly($propoertyName);
     }
 
     public function updateUser(){

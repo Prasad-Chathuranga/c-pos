@@ -1,29 +1,22 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Roles;
 
-use App\Models\User;
+use App\Models\Role;
 use Livewire\Component;
-use Livewire\WithPagination;
-use Flasher\SweetAlert\Prime\SweetAlertFactory;
 
-class Users extends Component
+class Index extends Component
 {
-    use WithPagination;
-    protected $paginationTheme = 'bootstrap';
 
     protected $listeners = [
         'remove'
     ];
 
-   public $email = 'test';
-
     public function render()
     {
-        $users = User::paginate(10);
-        return view('livewire.users.users', compact('users'))->extends('layouts.main');
+        $roles = Role::all();
+        return view('livewire.roles.index', compact('roles'))->extends('layouts.main');
     }
-
 
     public function delete($id){
 
@@ -41,16 +34,15 @@ class Users extends Component
     public function remove($id){
         
          try {
-            $user = User::findOrFail($id);
+            $user = Role::findOrFail($id);
             $user->delete();
             
-            flash()->addSuccess('User Deleted Successfully', 'Success');
+            flash()->addSuccess('Role Deleted Successfully', 'Success');
 
             return redirect()->back();
 
-        } catch (\Throwable $th) {
+        } catch (\Exception $th) {
             throw $th;
         }
     }
-    
 }

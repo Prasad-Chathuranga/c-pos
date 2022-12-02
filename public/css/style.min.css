@@ -2139,7 +2139,11 @@ h6 .badge {
 }
 
 .breadcrumb .breadcrumb-item {
-    line-height: 1
+    line-height: 1;
+}
+
+.breadcrumb-item  a{
+    text-decoration: none;
 }
 
 .breadcrumb .breadcrumb-item i {

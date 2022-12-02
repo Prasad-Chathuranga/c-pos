@@ -14,12 +14,12 @@ class Login extends Component
         'password'=>'required|min:6'
     ];
 
-    // protected $messages = [
-    //     'email.required' => 'The Email Address cannot be empty.',
-    //     'email.email' => 'The Email Address format is not valid.',
-    //     'password.required' => 'The Password cannot be empty.',
-    //     'password.min' => 'Password must be at least 6 characters.'
-    // ];
+    protected $messages = [
+        'email.required' => 'The Email Address cannot be empty.',
+        'email.email' => 'The Email Address format is not valid.',
+        'password.required' => 'The Password cannot be empty.',
+        'password.min' => 'Password must be at least 6 characters.'
+    ];
 
     public function updated($propertyName)
     {
@@ -42,7 +42,7 @@ class Login extends Component
         }
         else
         {
-            dd('false');
+            dd($credentials);
         }
        
     }

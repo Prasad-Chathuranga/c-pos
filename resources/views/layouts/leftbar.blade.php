@@ -21,7 +21,9 @@
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{url('users')}}">User Registry</a></li>
                     
-                    <li><a class="nav-link" href="layout-top-navigation.html">User Roles</a></li>
+                    <li><a class="nav-link" href="{{url('roles')}}">Roles</a></li>
+                    <li><a class="nav-link" href="{{url('modules')}}">Modules</a></li>
+                    <li><a class="nav-link" href="{{url('permissions')}}">Permissions</a></li>
                 </ul>
             </li>
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
