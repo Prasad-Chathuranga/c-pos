@@ -7,26 +7,35 @@
             <a href="index-2.html">CP</a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-            <li class="dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+            <li class="menu-header">Home</li>
+            <li><a class="nav-link" href="{{url('dashboard')}}"><i class="fa-solid fa-home"></i> <span>Dashboard</span></a></li>
+            {{-- <li class="dropdown active">
+                <a href="{{route('dashboard')}}" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="index-0.html">Analytics</a></li>
                     <li class="active"><a class="nav-link" href="index-2.html">Ecommerce</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="menu-header">Back Office</li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-users-gear"></i></i> <span>Access Management</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-users-gear"></i> <span>Access Management</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{url('users')}}">User Registry</a></li>
                     
                     <li><a class="nav-link" href="{{url('roles')}}">Roles</a></li>
                     <li><a class="nav-link" href="{{url('modules')}}">Modules</a></li>
                     <li><a class="nav-link" href="{{url('permissions')}}">Permissions</a></li>
+                    <li><a class="nav-link" href="{{url('role-permissions')}}">Role Permissions</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-cubes"></i> <span>Stock Management</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{url('product-categories')}}">Product Categories</a></li>
+                </ul>
+            </li>
+            {{--<li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
                 <ul class="dropdown-menu">
@@ -161,10 +170,10 @@
                     <li><a href="utilities-subscribe.html">Subscribe</a></li>
                 </ul>
             </li>
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li> --}}
         </ul>
-        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+        {{-- <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="https://getcodiepie.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split"><i class="fas fa-rocket"></i> Documentation</a>
-        </div>
+        </div> --}}
     </aside>
 </div>

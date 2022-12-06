@@ -13,11 +13,12 @@ class Index extends Component
     use WithPagination;
 
     protected $listeners =[ 
-        'openPermissionModal','closePermissionModal','enableTextField'
+        'openPermissionModal','closePermissionModal','enableTextField','remove'
     ];
 
-    public $name, $module_id, $permissions,$active;
-    public $a;
+    public $name, $module_id,$active;
+    public $permissions;
+
     public $updated_permissions = [], $permissionsArray = [];
     public $perPage= 5, $columns = ['*'], $pageName= 'page';
 
@@ -39,13 +40,12 @@ class Index extends Component
      
         $this->module_id = $id;
         $this->dispatchBrowserEvent('openPermissionModal');
-        $this->a = Permission::with('module')->whereModuleId($id)->paginate(5);
+
+        $this->permissions = Permission::with('module')->whereModuleId($id)->get();
        
-        $this->permissions = Permission::with('module')->whereModuleId($id)->paginate($this->perPage, $this->columns, $this->pageName)->toArray();
-       
-        foreach ($this->permissions['data'] as $value) {
-             $this->updated_permissions[$value['id']]['name'] = $value['name'];
-             $this->updated_permissions[$value['id']]['active'] = $value['active'];
+        foreach ($this->permissions as $value) {
+            $this->updated_permissions[$value->id]['name'] = $value->name;
+                    $this->updated_permissions[$value->id]['active'] = $value->active;
         }
       
 
@@ -72,12 +72,12 @@ class Index extends Component
 
             if ($permission) {
                 flash()->addSuccess('Permissions Updated Successfully', 'Success');
-                $this->permissions = Permission::with('module')->whereModuleId(request()->serverMemo['data']['module_id'])->paginate( $this->perPage, $this->columns, $this->pageName)->toArray();
+                $this->permissions = Permission::with('module')->whereModuleId(request()->serverMemo['data']['module_id'])->get();
 
 
-                foreach ($this->permissions['data'] as $value) {
-                    $this->updated_permissions[$value['id']]['name'] = $value['name'];
-                    $this->updated_permissions[$value['id']]['active'] = $value['active'];
+                foreach ($this->permissions as $value) {
+                    $this->updated_permissions[$value->id]['name'] = $value->name;
+                    $this->updated_permissions[$value->id]['active'] = $value->active;
                 }
 
             }
@@ -106,11 +106,11 @@ class Index extends Component
             if($permission){
                 flash()->addSuccess('Permission Created Successfully', 'Success');
                 $this->resetFields();
-                $this->permissions = Permission::with('module')->whereModuleId($this->module_id)->paginate( $this->perPage, $this->columns, $this->pageName)->toArray();
+                $this->permissions = Permission::with('module')->whereModuleId($this->module_id)->get();
                
-                foreach ($this->permissions['data'] as $value) {
-                    $this->updated_permissions[$value['id']]['name'] = $value['name'];
-                    $this->updated_permissions[$value['id']]['active'] = $value['active'];
+                foreach ($this->permissions as $value) {
+                    $this->updated_permissions[$value->id]['name'] = $value->name;
+                    $this->updated_permissions[$value->id]['active'] = $value->active;
                 }
 
             }
@@ -125,4 +125,40 @@ class Index extends Component
     }
 
 
+    public function delete($id){
+
+        $this->dispatchBrowserEvent('swal:confirm', [
+            'type' => 'warning',  
+            'message' => 'Are you sure?', 
+            'text' => 'If deleted, you will not be able to recover this imaginary file!',
+            'id'=>$id
+        ]);
+      
+       
+        
+    }
+
+    public function remove($id){
+     
+         try {
+            $permission = Permission::findOrFail($id);
+            $permission->delete();
+
+            $this->permissions = Permission::with('module')->whereModuleId($this->module_id)->get();
+               
+            foreach ($this->permissions as $value) {
+                $this->updated_permissions[$value->id]['name'] = $value->name;
+                $this->updated_permissions[$value->id]['active'] = $value->active;
+            }
+            
+            flash()->addSuccess('Permission Deleted Successfully', 'Success');
+
+            return redirect()->back();
+
+        } catch (\Exception $th) {
+            throw $th;
+        }
+    }
 }
+
+

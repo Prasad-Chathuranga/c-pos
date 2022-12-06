@@ -22,11 +22,16 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Module whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Module whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $activePermissions
+ * @property-read int|null $active_permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
  */
 class Module extends Model
 {
     use HasFactory;
 
+   
     public function permissions(){
         
         return $this->hasMany(Permission::class , 'module_id' , 'id');

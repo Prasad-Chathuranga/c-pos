@@ -28,7 +28,7 @@
                         </div>
 
                 </div>
-                @if (isset($permissions) && count($permissions) > 0)
+                @if (isset($permissions) && $permissions->count() > 0)
                     <div class="container">
                         <table class="table-bordered table" id="permission_list">
                             <thead>
@@ -40,27 +40,27 @@
                         </thead>
                             <tbody>
                 
-                                @foreach ($permissions['data'] as $key => $permission)
+                                @foreach ($permissions as $key => $permission)
                                     <tr>
-                                        <td><input type="text" id="permission_{{ $permission['id'] }}"
+                                        <td><input type="text" id="permission_{{ $permission->id }}"
                                                 class="form-control"
-                                                wire:model="updated_permissions.{{ $permission['id'] }}.name" disabled
+                                                wire:model="updated_permissions.{{ $permission->id }}.name" disabled
                                                 value="{{ $permission['name'] }}" /></td>
                                         <td class="text-center">
                                             <div class="form-check">
                                                 <input class="form-check-input"
-                                                    @if ($permission['active']) checked='checked' @endif
-                                                    wire:model="updated_permissions.{{ $permission['id'] }}.active"
+                                                    @if ($permission->active) checked='checked' @endif
+                                                    wire:model="updated_permissions.{{ $permission->id }}.active"
                                                     type="checkbox" id="defaultCheck1">
                                                 <label class="form-check-label" for="defaultCheck1"></label>
                                             </div>
                                         </td>
                                         <td> <a data-toggle="tooltip" data-placement="top" title="Edit Permission"
                                                 id="editIcon" href="javascript:;"
-                                                wire:click="enableThisPermission({{ $permission['id'] }})"
+                                                wire:click="enableThisPermission({{ $permission->id }})"
                                                 class="text-info"><i class="fa fa-pencil"></i></a>
                                             <a data-toggle="tooltip" data-placement="top" title="Delete Permission"
-                                                href="javascript:;" wire:click='delete({{ $permission['id'] }})'
+                                                href="javascript:;" wire:click='delete({{ $permission->id }})'
                                                 class="text-danger">
                                                 <i class="fa fa-trash-can ml-2"></i></a>
                                         </td>
@@ -175,31 +175,9 @@
             window.addEventListener('enableTextField', event => {
                 $('#permission_' + event.detail.id).prop("disabled", false);
                 $('#editIcon').prop("disabled", true);
-
             });
 
-            $( document ).ready(function() {
-                console.log('ghghg');
-                $('#permission_list').dataTable({
-                    "pageLength": 5,
-                    "order":false,
-                    "info":false,
-                    "dom": 'rtip',
-                    
-                });
-});
-
-            // window.addEventListener('initDataTable', event => {
-               
-
-            // });
-
-
-
-
-            //   window.addEventListener('closePermissionModal', event => {
-            //       $("#permissionModal").modal('hide');
-            //   })
+           
         </script>
     @endpush
 </div>

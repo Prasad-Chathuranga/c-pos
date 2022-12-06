@@ -74,4 +74,50 @@ class User extends Authenticatable
     public function role(){
         return $this->hasOne(Role::class, 'id','role_id');
     }
+
+    public function isPermitted($module,$permission){
+
+        //    return true;
+ 
+         $user = $this; // auth()->user();
+ 
+         //Invalid user
+         if(!$user){
+           //  abort(404);
+             // return abort('404');
+             return false;
+         }
+ 
+ 
+         //Check for overriden permissions
+        //  if($user->hasOverrides):
+        //      $result = PermissionOverride::checkForPermission($user->id, $module, $permission);
+ 
+        //      switch($result):
+ 
+        //          case 1 :
+        //              return true;
+        //          case -1:
+        //              return false;
+ 
+        //          default:
+        //              break;
+ 
+        //      endswitch;
+        //  endif;
+ 
+         $permissions = $user->role->permissions;
+         $perm = $permissions->where('name' , $permission)->where('activeModule.name' , $module)->where('active',true)->first();
+ 
+ 
+         if(!$perm)
+         {
+             // return abort(401);
+             return false;
+             // return response()->view('errors.404');
+         }
+ 
+         return true;
+ 
+     }
 }
