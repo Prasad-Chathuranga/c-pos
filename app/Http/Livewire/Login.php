@@ -42,7 +42,8 @@ class Login extends Component
         }
         else
         {
-            dd($credentials);
+            flash()->addError('Email or Password is Incorrect', 'Error');
+
         }
        
     }
