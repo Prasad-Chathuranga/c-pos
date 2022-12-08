@@ -22,6 +22,8 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ url('js/modules/bootstrap-social/bootstrap-social.css')}}">
     <link rel="stylesheet" href="{{ url('js/modules/datatables/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{ url('js/modules/select2/dist/css/select2.min.css')}}">
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ url('css/style.min.css')}}">
@@ -68,6 +70,9 @@
 <script src="{{ url('js/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 <script src="{{ url('js/modules/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{ url('js/modules/datatables/datatables.min.js')}}"></script>
+<script src="{{ url('js/modules/select2/dist/js/select2.full.min.js')}}"></script>
+
+
 
 
 

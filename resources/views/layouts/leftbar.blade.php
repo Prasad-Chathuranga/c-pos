@@ -32,7 +32,16 @@
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-cubes"></i> <span>Stock Management</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{url('product-categories')}}">Product Categories</a></li>
+                    <li><a class="nav-link" href="{{url('categories')}}">Categories</a></li>
+                    <li><a class="nav-link" href="{{url('products')}}">Products</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-receipt"></i> <span>Billing Management</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{url('invoices')}}">Invoices</a></li>
+                    {{-- <li><a class="nav-link" href="{{url('products')}}">Products</a></li> --}}
                 </ul>
             </li>
             {{--<li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>

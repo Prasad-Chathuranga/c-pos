@@ -39,7 +39,7 @@ class Index extends Component
             $category = Category::findOrFail($id);
             $category->delete();
             
-            flash()->addSuccess('Module Deleted Successfully', 'Success');
+            flash()->addSuccess('Category Deleted Successfully', 'Success');
 
             return redirect()->back();
 
