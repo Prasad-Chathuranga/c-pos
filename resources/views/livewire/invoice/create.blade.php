@@ -31,18 +31,48 @@
                             </div>
                             
                             <div class="card-body p-3">
-                   
+
+                                
+                   <div class="form-row">
                                         <div class="form-group col-md-4">
                                             <label >Customer</label>
                                         
-                                                <select wire:model='customer_id' class="form-control select2">
-                                                   @foreach ($customers as $customer)
+                                                <select wire:model='customer_id' wire:change='getCustomer'  id="customer" name="customer" class="form-control select2">
+                                                   {{-- @foreach ($customers as $customer)
                                                        <option value="{{$customer->id}}" id="{{$customer->id}}">{{$customer->first_name}} {{$customer->last_name}}</option>
-                                                   @endforeach
+                                                   @endforeach --}}
                                                 </select>
                                             
                                             @error('name') <span class="error">{{ $message }}</span> @enderror
                                         </div>
+
+                                        @isset($customer)
+                                            
+                                       
+                                        <div class="form-group ml-4 col-md-6">
+                                            <div class="card">
+                                              <div class="card-body">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td scope="row">First Name</td>
+                                                            <td>{{$customer->first_name}}</td>
+                                                          
+                                                        </tr>
+                                                        <tr>
+                                                            <td scope="row">Last Name</td>
+                                                            <td>{{$customer->last_name}}</td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                {{-- <h4 class="card-title">Title</h4>
+                                                <p class="card-text">Body</p> --}}
+                                              </div>
+                                            </div>
+                                        </div>
+                                        @endisset
+                   </div>
 
                                         <div class="form-group col-md-4">
                                             <label for="inputPassword4">Description</label>
@@ -93,12 +123,27 @@
 
 <script>
     $(document).ready(function(){
-        $(".select2").select2();
-        $(".select2").on('change', function (e) {
-            var customer_id = $(".select2").val();
-            @this.set('customer_id', customer_id);
-            window.livewire.emit('getCustomer');
-        });
+        // console.log();
+        $(".select2").select2({
+            ajax: {
+                url: "{{route('get-customer')}}",
+                data: function (params) {
+                var query = {
+                    search: params.term,
+                }
+
+                // Query parameters will be ?search=[term]&type=public
+                return query;
+                },
+                dataType: 'json',
+            },
+            minimumInputLength: 3,
+            placeholder: "Search for a Customer...",
+
+       
+            }).on('change', function (event) {
+                window.livewire.emit('getCustomerInfo', $(this).val());
+            });
     })
 </script>
     

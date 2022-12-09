@@ -894,7 +894,7 @@ tr:first-child>td>.fc-day-grid-event {
 }
 
 .select2-container.select2-container--open .select2-selection--multiple {
-    background-color: #ab95cb;
+    /* background-color: #ab95cb; */
     border-color: #6e4e9e
 }
 
@@ -905,7 +905,7 @@ tr:first-child>td>.fc-day-grid-event {
 }
 
 .select2-container.select2-container--open .select2-selection--single {
-    background-color: #ab95cb;
+    /* background-color: #ab95cb; */
     border-color: #6e4e9e
 }
 

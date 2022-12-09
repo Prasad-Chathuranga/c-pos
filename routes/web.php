@@ -51,6 +51,8 @@ Route::get('category/{id?}', CategoryCreate::class)->name('create_product_catego
 Route::get('product/{id?}', ProductCreate::class)->name('create_product');
 Route::get('invoice/{id?}', InvoiceCreate::class)->name('create_invoice');
 
+Route::get('get-customer', [InvoiceCreate::class, 'getCustomer'])->name('get-customer');
+
 
 // Route::get('permission/{id?}', ModulesCreate::class)->name('create_module');
 
