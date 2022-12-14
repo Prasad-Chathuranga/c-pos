@@ -3425,7 +3425,8 @@ pre {
     background-color: #fff;
     z-index: 880;
     border-right: 1px solid #dae1f4;
-    left: 0
+    left: 0;
+    z-index: auto;
 }
 
 .main-sidebar,

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ url('css/style.min.css')}}">
     <link rel="stylesheet" href="{{ url('css/components.min.css')}}">
 
+   
+
     @livewireStyles
 </head>
 
@@ -38,8 +40,7 @@
 
 
     @livewireScripts
-
-
+    
     <!-- General JS Scripts -->
 <script src="{{ asset('js/bundles/lib.vendor.bundle.js')}}"></script>
 <script src="{{ asset('js/CodiePie.js')}}"></script>
@@ -47,6 +48,7 @@
 <!-- JS Libraies -->
 
 <!-- Page Specific JS File -->
+
 
 <!-- Template JS File -->
 <script src="{{ asset('js/scripts.js')}}"></script>
